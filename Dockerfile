@@ -50,9 +50,8 @@ ENV PATH="/bedtools2/bin:${PATH}"
 #Clone LOHHLA and put it into the expected folder
 RUN git clone https://bitbucket.org/mcgranahanlab/lohhla.git && \
 	mv /lohhla /root/
-
-RUN wget http://www.novocraft.com/downloads/V4.02.02/novocraftV4.02.02.Linux3.10.0.tar.gz && \
-	tar -xzf novocraftV4.02.02.Linux3.10.0.tar.gz -C /
+COPY novocraftV4.02.02.Linux3.10.0.tar.gz /
+RUN tar -xzf /novocraftV4.02.02.Linux3.10.0.tar.gz -C /
 	
 #Novoalign IS NOT DISTRIBUTED WITH THIS CONTAINER YOU WILL NEED TO GET IT YOURSELF
 #You need to have novoalgin version 3.07.00 which we cannot distribute. You can get your version (as of 8/2/2019 
