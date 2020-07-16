@@ -6,7 +6,7 @@ FROM sachet/polysolver:v4
 MAINTAINER Danny Wells "danny@parkerici.org"
 
 #Install unix dependencies
-RUN apt-get update -y && apt-get install build-essential -y
+RUN apt-get update -y && apt-get install build-essential -y && sudo apt-get upgrade
 
 RUN apt-get -y install libcurl4-openssl-dev gfortran tcl-dev wget lftp -y tabix wget curl unzip gcc python-dev python-setuptools emacs vim git less lynx hdfview zlib1g-dev libncurses5-dev libncursesw5-dev cmake tar gawk valgrind sed hdf5-tools libhdf5-dev hdf5-helpers libhdf5-serial-dev openjdk-7-jdk r-base r-base-dev python-pip python python3 python3-dev python3-pip gfortran libblas3 libblas-dev liblapack3 liblapack-dev libatlas-base-dev libxml2-dev libxslt1-dev libreadline6 libreadline6-dev libjpeg8 libjpeg8-dev libfreetype6 libfreetype6-dev zlib1g-dev openssl libssl-dev pkg-config libffi-dev software-properties-common apt-transport-https ca-certificates sudo
 
@@ -50,8 +50,9 @@ ENV PATH="/bedtools2/bin:${PATH}"
 #Clone LOHHLA and put it into the expected folder
 RUN git clone https://bitbucket.org/mcgranahanlab/lohhla.git && \
 	mv /lohhla /root/
-COPY novocraftV4.02.02.Linux3.10.0.tar.gz /
-RUN tar -xzf /novocraftV4.02.02.Linux3.10.0.tar.gz -C /
+
+COPY novocraftV3.09.04.Linux3.10.0.tar.gz /
+RUN tar -xzf /novocraftV3.09.04.Linux3.10.0.tar.gz -C /
 	
 #Novoalign IS NOT DISTRIBUTED WITH THIS CONTAINER YOU WILL NEED TO GET IT YOURSELF
 #You need to have novoalgin version 3.07.00 which we cannot distribute. You can get your version (as of 8/2/2019 
@@ -66,7 +67,7 @@ RUN wget https://github.com/broadinstitute/picard/releases/download/1.123/picard
 	mv picard-tools-1.123 picard
 
 ADD example2.sh /root/lohhla/example-file/example2.sh
-RUN pip install pandas
+RUN pip install --upgrade setuptools && pip install pandas
 ADD Dockerfile /Dockerfile
 ADD VERSION /VERSION
-ADD LOHHLAscript_b37.R /root/lohhla/LOHHLAscript_b37.R
+# ADD LOHHLAscript_b37.R /root/lohhla/LOHHLAscript_b37.R
