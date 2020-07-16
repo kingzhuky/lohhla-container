@@ -6,7 +6,7 @@ FROM sachet/polysolver:v4
 MAINTAINER Danny Wells "danny@parkerici.org"
 
 #Install unix dependencies
-RUN apt-get update -y && apt-get install build-essential -y && sudo apt-get upgrade
+RUN apt-get update -y && apt-get install build-essential -y && sudo apt-get upgrade -y
 
 RUN apt-get -y install libcurl4-openssl-dev gfortran tcl-dev wget lftp -y tabix wget curl unzip gcc python-dev python-setuptools emacs vim git less lynx hdfview zlib1g-dev libncurses5-dev libncursesw5-dev cmake tar gawk valgrind sed hdf5-tools libhdf5-dev hdf5-helpers libhdf5-serial-dev openjdk-7-jdk r-base r-base-dev python-pip python python3 python3-dev python3-pip gfortran libblas3 libblas-dev liblapack3 liblapack-dev libatlas-base-dev libxml2-dev libxslt1-dev libreadline6 libreadline6-dev libjpeg8 libjpeg8-dev libfreetype6 libfreetype6-dev zlib1g-dev openssl libssl-dev pkg-config libffi-dev software-properties-common apt-transport-https ca-certificates sudo
 
